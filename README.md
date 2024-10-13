@@ -1,7 +1,7 @@
 # **SIMPE CRUD USING FASTAPI, SQLALCHEMY, POSTGRESQL**
 
 ## Setting Up
-1. first create a folder and clone the main module.
+1. first create a folder and clone.
 2. create a python environment using python-venv and install needed libraries.
 ```shell
 python3 -m venv env
