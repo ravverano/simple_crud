@@ -1,4 +1,4 @@
-# **SIMPE CRUD USING FASTAPI, SQLALCHEMY, POSTGRESQL**
+# **SIMPLE CRUD USING FASTAPI, SQLALCHEMY, POSTGRESQL**
 
 ## Setting Up
 1. first create a folder and clone.
