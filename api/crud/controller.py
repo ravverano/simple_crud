@@ -3,6 +3,7 @@ from models import SampleData
 from library import common
 from fastapi.encoders import jsonable_encoder
 from schemas.response import StandardResponse, GetResponse
+from fastapi import HTTPException
 
 class Crud():
     def get_data(
@@ -38,8 +39,8 @@ class Crud():
                 SampleData.data_name == data_name
             )
 
+        total_item = data.count()
         data = data.all()
-        total_item = len(list(map(jsonable_encoder, data)))
 
         return GetResponse (
             status="ok",
@@ -54,9 +55,7 @@ class Crud():
     ):
         # INSTANTIATE VARIABLES
         if type(query_json) != dict:
-            query_json = query_json.dict(by_alias=True)
-
-        print("query_json: ",query_json)
+            query_json = query_json.dict(by_alias=True) 
 
         # GENERATE ID
         query_json["data_id"] = common.uuid_generator()
@@ -97,6 +96,9 @@ class Crud():
             db.query(SampleData)
             .filter(SampleData.data_id == data_id)
         )
+        
+        if not data.first():
+            raise HTTPException(status_code=404, detail="Data not found")
         
         data.update(query_json)
         db.commit()
