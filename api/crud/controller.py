@@ -16,7 +16,7 @@ class Crud():
         query_json = query_json.dict(by_alias=True)
         data_id = query_json.get("data_id")
         data_description = query_json.get("data_description")
-        data_name = query_json.get("data.name")
+        data_name = query_json.get("data_name")
 
         # FETCH DATA
         data = (
