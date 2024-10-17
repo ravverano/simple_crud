@@ -6,6 +6,7 @@ from pydantic import (
 from typing import Any, Dict, Optional
 
 class Settings(BaseSettings):
+    # POSTGRES
     PSQL_USER: str
     PSQL_PASSWORD: str
     PSQL_HOST: str
@@ -13,12 +14,16 @@ class Settings(BaseSettings):
     PSQL_DBNAME: str
     SQLALCHEMY_DATABASE_URI: Optional[PostgresDsn] = None
 
+    # CLOUDANT
+    CLOUDANT_USERNAME: str
+    CLOUDANT_PASSWORD: str
+    CLOUDANT_URL: str
+    CLOUDANT_DB: str
+
     @validator("SQLALCHEMY_DATABASE_URI", pre=True)
     def assemble_db_connection(
         cls, v: Optional[str], values: Dict[str, Any]
     ) -> Any:
-        if isinstance(v, str):
-            return v
         return PostgresDsn.build(
             scheme="postgresql",
             user=values.get("PSQL_USER"),
