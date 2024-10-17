@@ -61,8 +61,6 @@ class Crud():
         if type(query_json) != dict:
             query_json = query_json.dict(by_alias=True)
 
-        print("query_json: ",query_json)
-
         # GENERATE ID
         _id = common.uuid_generator()
         query_json["data_id"] = _id
