@@ -1,6 +1,14 @@
-# **SIMPLE CRUD USING FASTAPI, SQLALCHEMY, POSTGRESQL**
+# **Simple CRUD API using FastAPI, SQLAlchemy, PostgreSQL, and NoSQL (CouchDB)**
 
 ## Setting Up
+Prerequisites
+Before you begin, make sure you have the following installed:
+
+- Python 3.7+
+- PostgreSQL
+- CouchDB
+- Git
+  
 1. first create a folder and clone.
 2. create a python environment using python-venv and install needed libraries.
 ```shell
