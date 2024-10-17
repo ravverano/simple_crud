@@ -13,7 +13,6 @@ class Common:
 
     # ------------------------------------
     # FUNCTION: get_timestamp
-    # DESCRIPTION : Get current timestamp
     # ------------------------------------
     def get_timestamp(self, wtime=0):
 
@@ -27,5 +26,19 @@ class Common:
             )
 
         return timestamp
+    
+    #----------------------------------------------
+    # SET OLD ID AND REVISION FOR UPDATING DOCUMENT
+    #----------------------------------------------
+    def clean_couch_doc(self, doc):
+        if "_id" in doc:
+            doc["id"] = doc["_id"]
+            del doc["_id"]
+        if "_rev" in doc:
+            doc["rev"] = doc["_rev"]
+            del doc["_rev"]
+
+        return doc
+
     
 common = Common()
